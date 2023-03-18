@@ -3,14 +3,19 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    //생성자 주입 - 의존관계가 실행중에 동적으로 변하는 경우는 거의 없으므로 생성자 주입이 권장됨.
     public MemberService(MemberRepository memberRepository) { // 팩토리 메서드?
         this.memberRepository = memberRepository;
     }

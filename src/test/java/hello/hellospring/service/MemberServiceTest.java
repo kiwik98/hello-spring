@@ -57,5 +57,14 @@ class MemberServiceTest {
 
     @Test
     void findOne() {
+        //given
+        Member member = new Member();
+        member.setName("spring");
+
+        Long saveId = memberService.join(member);
+        //when
+        Member findMember = memberService.findOne(saveId).get();
+        //then
+        assertThat(member.getName()).isEqualTo(findMember.getName());
     }
 }
